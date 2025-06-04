@@ -154,12 +154,6 @@ curl -X GET "http://localhost:8000/api/bookings/?email=john.doe@email.com" \
   -H "Content-Type: application/json"
 ```
 
-### With timezone header (optional)
-```bash
-curl -X GET "http://localhost:8000/api/classes/" \
-  -H "Content-Type: application/json" \
-  -H "X-Timezone: America/New_York"
-
 ### Populate Database with Sample Data
 ```bash
 # Create 20 classes and 15 bookings
