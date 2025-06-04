@@ -47,7 +47,7 @@ class FitnessClass(models.Model):
     
     def save(self, *args , **kwargs):
         # available slots shouldn't exceed total slots
-        if self.available_slots < self.total_slots:
+        if self.available_slots > self.total_slots:
             self.available_slots = self.total_slots 
         super().save(*args, **kwargs)
     

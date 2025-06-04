@@ -8,7 +8,7 @@ from .models import FitnessClass, Booking
 
 class FitnessClassModelTest(TestCase):
     def setUp(self):
-        self.future_time =timezone.now + timedelta(days=1)
+        self.future_time =timezone.now() + timedelta(days=1)
         self.fitness_class = FitnessClass.objects.create(
             name="Test Yoga Class",
             class_type="yoga",
@@ -45,6 +45,7 @@ class BookingAPITest(APITestCase):
         url = reverse('get_classes')
         response = self.client.get(url)
         
+        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.data['success'])
         self.assertEqual(len(response.data['data']), 1)
@@ -52,6 +53,7 @@ class BookingAPITest(APITestCase):
     def test_create_booking(self):
         """Test POST /api/book/ endpoint"""
         url = reverse('create_booking')
+        
         data = {
             'class_id': self.fitness_class.id,
             'client_name': 'Test User',
@@ -61,6 +63,7 @@ class BookingAPITest(APITestCase):
         response = self.client.post(url, data, format='json')
         
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        
         self.assertTrue(response.data['success'])
         
         # Check if booking was created
