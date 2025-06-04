@@ -11,7 +11,7 @@ class FitnessClass(models.Model):
     """
     Represents a fitness class offered by the studio
     """
-    CLASS_TYPE = [
+    CLASS_TYPES = [
         ('yoga', 'Yoga'),
         ('zumba', 'Zumba'),
         ('hiit', 'HIIT'),
